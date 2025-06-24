@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sales Prediction App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .wrapper {
+      display: flex;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .form-section, .result-section {
+      flex: 1;
+      padding: 40px 30px;
+    }
+
+    .form-section {
+      background: #f7f9fc;
+      border-right: 1px solid #ddd;
+    }
+
+    .form-section h2,
+    .result-section h2 {
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .output-box {
+      background: #eef6ff;
+      padding: 30px;
+      border-radius: 10px;
+      border: 2px dashed #007bff;
+      color: #333;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+      .form-section, .result-section {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Left Side: Input Form -->
+    <div class="form-section">
+      <h2>📝 Input Store Details</h2>
+      <form action="/predict" method="post">
+        <label for="Store">Store ID</label>
+        <input type="number" name="Store" required>
+
+        <label for="Promo">Promo</label>
+        <select name="Promo" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+
+        <label for="SchoolHoliday">School Holiday</label>
+        <select name="SchoolHoliday" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+
+        <label for="StoreType">Store Type</label>
+        <select name="StoreType" required>
+          <option value="1">Type A</option>
+          <option value="2">Type B</option>
+          <option value="3">Type C</option>
+          <option value="4">Type D</option>
+        </select>
+
+        <label for="Assortment">Assortment</label>
+        <select name="Assortment" required>
+          <option value="1">Basic</option>
+          <option value="2">Extra</option>
+          <option value="3">Extended</option>
+        </select>
+
+        <label for="CompetitionDistance">Competition Distance</label>
+        <input type="number" name="CompetitionDistance" required>
+
+        <label for="Promo2">Promo2</label>
+        <select name="Promo2" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+
+        <label for="Month">Month</label>
+        <input type="number" name="Month" min="1" max="12" required>
+
+        <label for="DayOfWeek">Day of Week</label>
+        <select name="DayOfWeek" required>
+          <option value="0">Monday</option>
+          <option value="1">Tuesday</option>
+          <option value="2">Wednesday</option>
+          <option value="3">Thursday</option>
+          <option value="4">Friday</option>
+          <option value="5">Saturday</option>
+          <option value="6">Sunday</option>
+        </select>
+
+        <label for="IsWeekend">Is Weekend</label>
+        <select name="IsWeekend" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+
+        <input type="submit" value="Predict Sales">
+      </form>
+    </div>
+
+    <!-- Right Side: Output -->
+    <div class="result-section">
+      <h2>📈 Predicted Sales</h2>
+      <div class="output-box">
+        {% if prediction %}
+          <p><strong>₹ {{ prediction }}</strong></p>
+        {% else %}
+          <p>Prediction will appear here after form submission.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

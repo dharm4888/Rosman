@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/91878/AI%20COURSE%20DIGICROME/rosman%20sale/mlruns/593725941779317615/8eeefbc063f54758b50b909dc4305396/artifacts
+end_time: 1750694440596
+entry_point_name: ''
+experiment_id: '593725941779317615'
+lifecycle_stage: active
+run_id: 8eeefbc063f54758b50b909dc4305396
+run_name: lstm_sales_forecasting
+run_uuid: 8eeefbc063f54758b50b909dc4305396
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750694369397
+status: 3
+tags: []
+user_id: '91878'
